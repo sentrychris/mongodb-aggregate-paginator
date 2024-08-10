@@ -1,6 +1,6 @@
 {
   "name": "mongodb-aggregate-paginator",
-  "version": "0.1.0",
+  "version": "0.0.9",
   "author": "Chris Rowles <christopher.rowles@outlook.com>",
   "license": "MIT",
   "description": "Build paginated responses from aggregate mongodb queries.",

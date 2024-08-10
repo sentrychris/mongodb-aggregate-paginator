@@ -6,7 +6,7 @@
  * page, URLs for navigating to other pages, and metadata about the pagination, such as the current
  * page number, total items, and the range of items displayed on the current page.
  *
- * @template T - The type of the data items contained in the `data` array.
+ * @typeParam T - The type of the data items contained in the `data` array.
  */
 export interface Pagination<T> {
   /** The array of data items for the current page */
@@ -54,7 +54,7 @@ export interface Pagination<T> {
  * current page, the number of items per page, filtering criteria through a query string,
  * and the projection of fields to include in the results.
  *
- * @template T - The type for the projection object, defining the fields to include in the
+ * @typeParam T - The type for the projection object, defining the fields to include in the
  *               result set.
  */
 export interface PaginationOptions<T> {

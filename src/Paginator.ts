@@ -28,9 +28,9 @@ import type { Pagination, PaginationOptions } from "./Pagination";
  * console.log(paginatedResult);
  * ```
  *
- * @template T - The type for the projection object, defining the shape of the projected
+ * @typeParam T - The type for the projection object, defining the shape of the projected
  *               fields.
- * @template D - The type for the resulting document data.
+ * @typeParam D - The type for the resulting document data.
  */
 export class Paginator<T, D> {
   /** Page number */

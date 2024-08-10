@@ -1,0 +1,23 @@
+{
+  "name": "mongodb-aggregate-paginator",
+  "version": "0.1.0",
+  "author": "Chris Rowles <christopher.rowles@outlook.com>",
+  "license": "MIT",
+  "description": "Build paginated responses from aggregate mongodb queries.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sentrychris/mongodb-aggregate-paginator.git"
+  },
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "@types/mongodb": "^4.0.7",
+    "@types/node": "^22.1.0",
+    "typescript": "^5.5.4"
+  }
+}

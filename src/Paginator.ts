@@ -134,11 +134,11 @@ export class Paginator<T, D> {
    * @returns metadata for pagination
    */
   protected async getTotalInfo() {
-    const [{ totalCount }] = await this.collection
+    const result = await this.collection
       .aggregate([...this.aggregation, { $count: "totalCount" }])
       .toArray();
 
-    return totalCount;
+    return result.length > 0 ? result[0].totalCount : 0;
   }
 
   /**

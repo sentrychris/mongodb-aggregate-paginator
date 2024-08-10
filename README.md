@@ -1,5 +1,8 @@
 # MongoDB Aggregate Paginator
 
+
+[![CI Tests](https://github.com/sentrychris/mongodb-aggregate-paginator/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/sentrychris/mongodb-aggregate-paginator/actions/workflows/tests.yml)
+
 A TypeScript utility class designed to help you paginate the results of mongodb aggregation queries easily. This paginator simplifies the process of managing large datasets by breaking them into manageable pages, which can be navigated using a set of automatically generated URLs.
 
 ## Features

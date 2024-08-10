@@ -4,17 +4,17 @@ import type { Pagination, PaginationOptions } from "./Pagination";
 /**
  * MongoDB Aggregate Paginator.
  *
- * This class provides a utility for paginating the results of MongoDB aggregation queries. 
- * It simplifies the process of retrieving large datasets by dividing them into manageable 
+ * This class provides a utility for paginating the results of MongoDB aggregation queries.
+ * It simplifies the process of retrieving large datasets by dividing them into manageable
  * pages and generating pagination metadata including URLs for navigating through pages.
  *
- * The paginator is highly customizable, allowing the user to specify options such as 
- * the page number, limit per page, query string, and projection of fields. It also 
- * handles the creation of pagination URLs (first, last, next, and previous pages) based 
+ * The paginator is highly customizable, allowing the user to specify options such as
+ * the page number, limit per page, query string, and projection of fields. It also
+ * handles the creation of pagination URLs (first, last, next, and previous pages) based
  * on the provided URL and query parameters.
  *
  * Example usage:
- * 
+ *
  * ```typescript
  * const paginator = new Paginator(collection, pipeline, {
  *   page: 1,
@@ -23,7 +23,7 @@ import type { Pagination, PaginationOptions } from "./Pagination";
  *   query: "status=active",
  *   project: { _id: 0, category: 1, count: 1 }
  * });
- * 
+ *
  * const paginatedResult = await paginator.paginate();
  * console.log(paginatedResult);
  * ```

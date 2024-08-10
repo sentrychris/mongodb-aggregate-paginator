@@ -1,7 +1,6 @@
 {
   "bracketSpacing": true,
   "semi": true,
-  "singleQuote": true,
   "tabWidth": 2,
   "overrides": [
     {
@@ -9,9 +8,10 @@
       "options": {
         "parser": "typescript",
         "semi": true,
-        "singleQuote": true,
+        "singleQuote": false,
         "useTabs": false,
-        "tabWidth": 2
+        "tabWidth": 2,
+        "printWidth": 90
       }
     }
   ]

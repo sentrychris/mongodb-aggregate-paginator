@@ -9,7 +9,6 @@ const mockCollection = {
   aggregate: jest.fn().mockReturnValue(mockCursor),
 } as unknown as Collection<Document>;
 
-
 describe("Paginator", () => {
   // Reset mocks after each test to ensure isolation
   afterEach(() => {
@@ -18,11 +17,11 @@ describe("Paginator", () => {
 
   it("should initialize with default values", () => {
     const paginator = new Paginator(mockCollection, []);
-    
-    expect(paginator['page']).toBe(1);
-    expect(paginator['limit']).toBe(10);
-    expect(paginator['query']).toBe("");
-    expect(paginator['url']).toBe("");
+
+    expect(paginator["page"]).toBe(1);
+    expect(paginator["limit"]).toBe(10);
+    expect(paginator["query"]).toBe("");
+    expect(paginator["url"]).toBe("");
   });
 
   it("should initialize with provided options", () => {
@@ -36,10 +35,10 @@ describe("Paginator", () => {
 
     const paginator = new Paginator(mockCollection, [], options);
 
-    expect(paginator['page']).toBe(2);
-    expect(paginator['limit']).toBe(20);
-    expect(paginator['url']).toBe("/api/test");
-    expect(paginator['query']).toBe("status=active");
+    expect(paginator["page"]).toBe(2);
+    expect(paginator["limit"]).toBe(20);
+    expect(paginator["url"]).toBe("/api/test");
+    expect(paginator["query"]).toBe("status=active");
   });
 
   it("should return paginated data and metadata", async () => {
@@ -49,7 +48,11 @@ describe("Paginator", () => {
       .mockResolvedValueOnce([{ totalCount: 1 }]); // Second mock call for getTotalInfo()
 
     // Instantiate the Paginator with custom options
-    const paginator = new Paginator(mockCollection, [], { page: 1, limit: 1, url: "/api/test" });
+    const paginator = new Paginator(mockCollection, [], {
+      page: 1,
+      limit: 1,
+      url: "/api/test",
+    });
     const result = await paginator.paginate();
 
     // Verify that the returned pagination metadata and data are correct
@@ -72,11 +75,14 @@ describe("Paginator", () => {
   it("should correctly modify the aggregation pipeline for pagination", async () => {
     // Mocking MongoDB to return 20 documents and a total count of 20
     mockCursor.toArray
-      .mockResolvedValueOnce(new Array(20).fill({test: 'test'})) // First mock call for getData()
+      .mockResolvedValueOnce(new Array(20).fill({ test: "test" })) // First mock call for getData()
       .mockResolvedValueOnce([{ totalCount: 20 }]); // Second mock call for getTotalInfo()
 
     // Instantiate the Paginator with custom aggregation and options
-    const paginator = new Paginator(mockCollection, [{ $match: { test: "test" } }], { page: 1, limit: 20 });
+    const paginator = new Paginator(mockCollection, [{ $match: { test: "test" } }], {
+      page: 1,
+      limit: 20,
+    });
     await paginator.paginate();
 
     // Verify that the aggregation pipeline has been correctly modified for pagination
@@ -92,21 +98,17 @@ describe("Paginator", () => {
     mockCursor.toArray
       .mockResolvedValueOnce(new Array(50).fill({ test: "test" })) // First mock call for getData()
       .mockResolvedValueOnce([{ totalCount: 50 }]); // Second mock call for getTotalInfo()
-  
+
     // Instantiate the Paginator with custom options
-    const paginator = new Paginator(
-      mockCollection,
-      [{ $match: { test: "test" } }],
-      {
-        page: 1,
-        limit: 10,
-        url: "/api/test",
-        query: "status=active"
-      }
-    );
-    
+    const paginator = new Paginator(mockCollection, [{ $match: { test: "test" } }], {
+      page: 1,
+      limit: 10,
+      url: "/api/test",
+      query: "status=active",
+    });
+
     const result = await paginator.paginate();
-  
+
     // Verify that the pagination URLs and metadata are correctly generated
     expect(result.first_page_url).toBe("/api/test?status=active&page=1");
     expect(result.last_page_url).toBe("/api/test?status=active&page=5");
@@ -123,7 +125,11 @@ describe("Paginator", () => {
       .mockResolvedValueOnce([{ totalCount: 0 }]); // Second mock call for getTotalInfo()
 
     // Instantiate the Paginator with default options
-    const paginator = new Paginator(mockCollection, [], { page: 1, limit: 10, url: "/api/test" });
+    const paginator = new Paginator(mockCollection, [], {
+      page: 1,
+      limit: 10,
+      url: "/api/test",
+    });
     const result = await paginator.paginate();
 
     // Verify that the pagination metadata correctly handles the edge case of no data
